@@ -17,3 +17,9 @@ Route::get('/', function () {
 Route::get('/phpinfo', function () {
     phpinfo();
 });
+#+++++++++++++++++++++测试Redis+++++++++++++++++++++++
+Route::get('/test/redis','TestController@testRedis');
+#+++++++++++++++++++++测试Redis+++++++++++++++++++++++
+Route::prefix('api/')->group(function(){
+    Route::get('/reg','UserController@reg');
+});
