@@ -18,8 +18,14 @@ Route::get('/phpinfo', function () {
     phpinfo();
 });
 #+++++++++++++++++++++测试Redis+++++++++++++++++++++++
-Route::get('/test/redis','TestController@testRedis');
+Route::prefix('/test')->group(function(){
+    Route::get('/redis','TestController@testRedis');
+    Route::get('/token','TestController@getAccessToken');
+    Route::get('/curl1','TestController@curl1');
+    Route::get('/curl2','TestController@curl2');
+    Route::get('/guzzle','TestController@guzzle');
+});
 #+++++++++++++++++++++测试Redis+++++++++++++++++++++++
-Route::prefix('api/')->group(function(){
-    Route::get('/reg','UserController@reg');
+Route::prefix('/api')->group(function(){
+    Route::post('/reg','UserController@reg');
 });
