@@ -82,4 +82,10 @@ class TestController extends Controller
         $arr=json_decode($abc,true);
         echo "<pre>";print_r($arr);echo"</pre>";
     }
+    public function ceshi1(){
+        echo "<pre>";print_r($_POST);echo"</pre>";
+    }
+    public function ceshi2(){
+        echo "<pre>";print_r($_POST);echo"</pre>";
+    }
 }

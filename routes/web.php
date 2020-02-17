@@ -17,15 +17,18 @@ Route::get('/', function () {
 Route::get('/phpinfo', function () {
     phpinfo();
 });
-#+++++++++++++++++++++测试Redis+++++++++++++++++++++++
 Route::prefix('/test')->group(function(){
     Route::get('/redis','TestController@testRedis');
     Route::get('/token','TestController@getAccessToken');
     Route::get('/curl1','TestController@curl1');
     Route::get('/curl2','TestController@curl2');
     Route::get('/guzzle','TestController@guzzle');
+    Route::post('/ceshi1','TestController@ceshi1');
+    Route::post('/ceshi2','TestController@ceshi2');
 });
-#+++++++++++++++++++++测试Redis+++++++++++++++++++++++
 Route::prefix('/api')->group(function(){
     Route::post('/reg','UserController@reg');
 });
+
+
+Route::get('/goods','GoodsController@goods');
