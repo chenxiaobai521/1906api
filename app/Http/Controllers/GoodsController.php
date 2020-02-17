@@ -33,7 +33,7 @@ class GoodsController extends Controller
                     ['ip','=',$ip]
                 ];
                 Goods::where($where)->increment('pv');
-                $uv=Goods::select('ua')->count();
+                $uv=Goods::select('ua')->where('goods_id',$goods_id)->count();
                 $pv=Goods::sum('pv');
                 echo ('uv:'.$uv);
                 echo "<br>";
