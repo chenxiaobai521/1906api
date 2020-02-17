@@ -14,31 +14,17 @@ class GoodsController extends Controller
         $ua=$_SERVER['HTTP_USER_AGENT'];
         $time=time();
         // dump($ua);die;
-        $data['ua']=$ua;
-        $data['ip']=$ip;
-        $data['created_at']=$time;
-        $count=Goods::where('goods_id',$goods_id)->count();
-        if(empty($count)){
-            $data['goods_id']=$goods_id;
-            $data['pv']=1;
-            Goods::create($data);
-        }else{
-            $count1=Goods::select('ip')->where('goods_id',$goods_id)->count();
-            if($count1=0){
-                $data['pv']=1;
-                Goods::create($data);
-            }else{
-                $where=[
-                    ['goods_id','=',$goods_id],
-                    ['ip','=',$ip]
-                ];
-                Goods::where($where)->increment('pv');
-                $uv=Goods::select('ua')->where('goods_id',$goods_id)->count();
-                $pv=Goods::sum('pv');
-                echo ('uv:'.$uv);
-                echo "<br>";
-                echo ('pv:'.$pv);
-            }
-        }
+        $data=[
+            'goods_id'=>$goods_id,
+            'ua'=>$ua,
+            'ip'=>$ip,
+            'created_at'=>$time,
+        ];
+        Goods::create($data);
+        $pv=Goods::where('goods_id',$goods_id)->count();
+        $uv=Goods::where('goods_id',$goods_id)->distinct('ua')->count('ua');
+        echo ('pv:'.$pv);
+        echo "<hr>";
+        echo ('uv:'.$uv);
     }
 }
