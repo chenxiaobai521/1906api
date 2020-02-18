@@ -13,8 +13,8 @@ class GoodsController extends Controller
         // dump($goods_id);die;
         $key=$goods_id;
         echo 'redis:'.$key;echo '<br>';
-        $redis=Redis::get($key);
-        if($redis){
+        $cache=Redis::get($key);
+        if($cache){
             echo '有';
             $abc=json_decode($cache,true);
             print_r($abc);
