@@ -43,4 +43,17 @@ class GoodsController extends Controller
         echo "<hr>";
         echo ('uv:'.$uv);
     }
+    public function count(){
+        $max=env('API_ACCESS_COUNT');
+        $key="abc";
+        $number=Redis::get($key);
+        if($number>$max){
+            $time=env('API_TIMEOUT_SECONT');
+            Redis::expire($key,$time);
+            echo "现在的访问次数超过了上限";die;
+        }
+        $count=Redis::incr($key);
+        echo $count;echo "<br>";
+        echo "访问正常";
+    }
 }

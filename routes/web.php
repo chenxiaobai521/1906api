@@ -31,4 +31,5 @@ Route::prefix('/api')->group(function(){
 });
 
 
-Route::get('/goods','GoodsController@goods');
+Route::get('/goods','GoodsController@goods')->middleware('apifilter');
+Route::get('/count','GoodsController@count')->middleware('apifilter');
