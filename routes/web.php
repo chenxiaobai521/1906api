@@ -28,8 +28,10 @@ Route::prefix('/test')->group(function(){
 });
 Route::prefix('/api')->group(function(){
     Route::post('/reg','UserController@reg');
+    Route::get('/weather','UserController@weather');
 });
 
 
 Route::get('/goods','GoodsController@goods')->middleware('apifilter');
 Route::get('/count','GoodsController@count')->middleware('apifilter');
+Route::get('/test','UserController@test');

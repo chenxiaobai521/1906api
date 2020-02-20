@@ -15,7 +15,7 @@ class GoodsController extends Controller
         echo 'redis:'.$key;echo '<br>';
         $cache=Redis::get($key);
         if($cache){
-            echo '有';
+            echo '有';echo '<br>';
             $abc=json_decode($cache,true);
             print_r($abc);
         }else{
@@ -25,7 +25,6 @@ class GoodsController extends Controller
             Redis::set($key,$abc);
             Redis::expire($key,10);
         }
-        die;
         $ip=$_SERVER['REMOTE_ADDR'];
         $ua=$_SERVER['HTTP_USER_AGENT'];
         $time=time();
