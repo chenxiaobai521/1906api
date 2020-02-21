@@ -102,7 +102,7 @@ class TestController extends Controller
         $str1=$_GET['str1'];
         $key=1906;
         $method="aes-128-cbc";
-        $iv="abcdefg123456789";
+        $iv="abcegphinox23456";
         $data=base64_decode($str1);
         echo "乱码密文:".$data;echo "<br>";
         $str=openssl_decrypt($data,$method,$key,OPENSSL_RAW_DATA,$iv);
