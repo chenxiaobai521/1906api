@@ -88,4 +88,24 @@ class TestController extends Controller
     public function ceshi2(){
         echo "<pre>";print_r($_POST);echo"</pre>";
     }
+    public function jiemi(){
+        $newstr=$_GET['newstr'];
+        $length=strlen($newstr);
+        $str="";
+        for($i=0;$i<$length;$i++){
+            $code=ord($newstr[$i])-1;
+            $str.=chr($code);
+        }
+        echo "原文:".$str;
+    }
+    public function bbb(){
+        $str1=$_GET['str1'];
+        $key=1906;
+        $method="aes-128-cbc";
+        $iv="abcdefg123456789";
+        $data=base64_decode($str1);
+        echo "乱码密文:".$data;echo "<br>";
+        $str=openssl_decrypt($data,$method,$key,OPENSSL_RAW_DATA,$iv);
+        echo "原文:".$str;
+    }
 }

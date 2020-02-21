@@ -35,3 +35,5 @@ Route::prefix('/api')->group(function(){
 Route::get('/goods','GoodsController@goods')->middleware('apifilter');
 Route::get('/count','GoodsController@count')->middleware('apifilter');
 Route::get('/test','UserController@test');
+Route::get('/jiemi','TestController@jiemi');
+Route::get('/bbb','TestController@bbb');
